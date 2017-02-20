@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<meta name="x5-orientation" content="portrait" />
+		<meta name="screen-orientation" content="portrait" />
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<style>
+			*{margin:0;padding:0;font-family: "微软雅黑";}
+			div{margin-bottom: 15px;}
+			span{font-weight: bold;color:#f00;display: inline-block;}
+			.FnDiv{position: absolute;z-index: 2;border:1px solid #4D90CB;background: #fff;margin: 0 !important;padding: 0 !important;}
+			.FnDiv div{margin:0 !important;}
+			.content{padding: 10px;line-height:24px;font-size: 14px;white-space: normal;word-break: break-all;}
+			.content .bSpan{position: absolute;left:0;bottom:0;width:100%;text-align: center;height:50px;line-height:50px;}
+			.title{height:30px;line-height:30px;color:#fff;background:black;font-size: 16px;padding: 0 10px;}
+			.title span{color:#fff !important;opacity: .8;}
+			.close{float: right;cursor: pointer;height:30px;padding-left:10px;}
+			#mark{position: absolute;left:0;top: 0;background: black;opacity: .5;filter: alpha(opacity=50);z-index: 5;margin: 0 !important;padding: 0 !important;}
+			#popSize{position: absolute;right: 0;bottom: 0;width: 20px;height: 20px;background: red;cursor: nwse-resize;padding: 0 !important;}
+			.thumbnail{min-height: 80px;}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2>★ 数组的扩展</h2>
+			<div class="row text-info">
+				<div id="divs">
+					<div class="alertDiv col-lg-3"><div class="thumbnail">div1</div></div>
+					<div class="alertDiv col-lg-3"><div class="thumbnail">div2</div></div>
+					<div class="alertDiv col-lg-3"><div class="thumbnail">div3</div></div>
+					<div class="alertDiv col-lg-3"><div class="thumbnail">div4</div></div>
+					<div class="alertDiv col-lg-3"><div class="thumbnail">div5</div></div>
+				</div>
+			</div>
+			<div class="row text-success">
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="arrFrom">Array.from()方法：是将类数组对象、字符串转为真正的数组：</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="arrOf">Array.of()方法：把参数转换为数组：</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="arrFind">arr.find()方法：我只返回第一个符合条件的是：</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="findIndex">arr.findIndex()方法：大于 2 的索引为：</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="arrFill">arr.fill()方法：arr.fill ===> 填充数组，有三个参数，第一个参数为要替换的内容，第二个参数为起始位置，第三个参数为结束位置，但不包含结束位置，此处值为：</div></div>
+			</div>
+			<h3>★ for...of... ---> <em>类似于for...in...但她是用来遍历value值的</em></h3>
+			<div class="row obObj text-info">
+				<div class="alertDiv col-lg-4"><div class="thumbnail" id="forOf">for...of...分别输出数组和字符串：</div></div>
+				<div class="alertDiv col-lg-4"><div class="thumbnail" id="forOfKeys">arr.krys()方法 ===> key的索引为：</div></div>
+				<div class="alertDiv col-lg-4"><div class="thumbnail" id="entries">arr.entries()方法 ===> 同时遍历key与value：*谷歌不支持解构赋值此句代码注释*</div></div>
+				<div class="alertDiv col-lg-4"><div class="thumbnail" id="sztd">数组推导：通过现有数组生成新的数组 ===> *谷歌不支持解构赋值此句代码注释* </div></div>
+			</div>
+			<h2>★ 对象的扩展</h2>
+			<div class="row text-success">
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="objDiv">ES6中属性简洁表示法，直接return{x,y} ===> function fn(x,y){x++;y++;<span>return{x,y}</span>};fn(1,2);值分别为：</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="showName">ES6中属性简洁表示法，var obj = {name : 'suntao',<span>showName(){return this.name;}</span>}，name值为：</div></div>
+				<!--这里偷懒了用了一坨 &nbsp; 好恶心-->
+				<div class="alertDiv col-lg-12"><div class="thumbnail" id="bdsObj">ES6允许对象的 key 值为表达式形式：<br />&nbsp;&nbsp;let sex = '男';<br />&nbsp;&nbsp;let person = {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name : '孙涛',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[sex] : false,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['a'+'ge'] : 30,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['j'+'o'+'b'] : '目前正在找工作',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['get'+'Name'](){<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this.name;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;}<br />输出表达式：姓名:`+person.getName()+`,性别:`+person.age+`,职业:`+person.job，值为：<br /></div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail"><span>Object.is(a,b)</span>，比较两个参数是否相等(类似全等但有不同之处): console.log(0 === -0);//true；console.log(Object(0,-0)//false；console.log(NaN,NaN)//true)</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="getsetPro">Object.getPrototypeOf(object) 译：获取对象的prototype 和 Object.setPrototypeOf(object) 译：设置对象的prototype</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="hbObj">Object.assign()合并对象*如果对象之间的属性名相同，后者覆盖前者此例输出值为：</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="proxy">Proxy 的 get(){} 和 set(){}，get 和 set 一般都要加上：</div></div>
+			</div>
+			<h2>★ 绑定事件</h2>
+			<div class="row text-info">
+				<div class="alertDiv col-lg-12"><div class="thumbnail" id="observe">
+					Object.observe(obj,observe,[eventType])监控属性变化,一旦发生变化就会调用回调的参数，第一个参数为需要监控的对象，第二个参数为回调函数（一般会接受一个数组形式的参数），第三个参数为指定的事件对象，事件对象包括（1.add添加属性；2.update属性值的变化；3.delete删除属性；4.setPrototype设置原型；5.reconfigure属性的attributes对象发生变化）:
+				</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="unobserve">Object.unobserve(obj,observe)取消监控</div></div>
+				<div class="alertDiv col-lg-6"><div class="thumbnail" id="objKeys">Object.keys(obj)以数组的形式将对象的属性输出：["x11", "y11"]</div></div>
+			</div>
+			<h2>★ 函数的扩展</h2>
+			<div class="row text-success">
+				<div class="alertDiv col-lg-4"><div class="thumbnail"></div></div>
+			</div>
+			<div class="row text-info">
+				<!-- 多说评论框 start -->
+				<div class="ds-thread" data-thread-key="1000" data-title="ES6笔记" data-url="http://dxsuntao.com/templets/Simple/es6_array.html"></div>
+				<!-- 多说评论框 end -->
+				<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+				<script type="text/javascript">
+				var duoshuoQuery = {short_name:"dxsuntao"};
+					(function() {
+						var ds = document.createElement('script');
+						ds.type = 'text/javascript';ds.async = true;
+						ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+						ds.charset = 'UTF-8';
+						(document.getElementsByTagName('head')[0] 
+						 || document.getElementsByTagName('body')[0]).appendChild(ds);
+					})();
+					</script>
+				<!-- 多说公共JS代码 end -->
+			</div>
+		</div>
+	</body>
+</html>
+<script src="pops.js"></script>
+<script src="ES6_index.js"></script>
+<script src="moveTo.js"></script>
